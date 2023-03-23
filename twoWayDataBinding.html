@@ -1,0 +1,17 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <input type="text" v-model="name" />
+  <!-- v-model sayesinde input value değerini name ile doldurduk ve input'a girilen herhangi bir değerin name'i değiştirmesini sağladık.-->
+  <p>{{name}}</p>
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      name: "Salih Can",
+    },
+    methods: {},
+  });
+</script>

@@ -1,0 +1,49 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<style>
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  .green {
+    background-color: green;
+  }
+
+  .blue {
+    background-color: blue;
+  }
+</style>
+
+<div id="app">
+  <div class="box" :style="{backgroundColor : color}"></div>
+  <div class="box" :style="customStyle"></div>
+  <div class="box" :style="[customStyle, { width: height + 'px' }]"></div>
+
+  <hr />
+
+  <input type="text" v-model="color" />
+  <input type="number" v-model="height" />
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      attachedClass: false,
+      color: "green",
+      height: 100,
+    },
+    computed: {
+      customStyle() {
+        return {
+          backgroundColor: this.color,
+          height: this.height + "px",
+        };
+      },
+    },
+  });
+</script>

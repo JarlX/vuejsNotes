@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="exercise">
+  <div>
+    <p>Şuanki Değer : {{ value }}</p>
+    <button @click="value+=5">Add 5</button>
+    <button @click="value+=1">Add 1</button>
+    <p>{{ result }}</p>
+  </div>
+
+  <div>
+    <input type="text" v-model="timeout" />
+    <p>{{value}}</p>
+  </div>
+</div>
+
+<script>
+  new Vue({
+    el: "#exercise",
+    data: {
+      value: 0,
+      timeout: 0,
+    },
+    computed: {
+      result() {
+        return this.value == 33 ? "Tamamlandı" : "Henüz Bitmedi";
+      },
+    },
+
+    watch: {
+      value() {
+        setTimeout(() => {
+          this.value = 0;
+        }, this.timeout);
+      },
+    },
+  });
+</script>

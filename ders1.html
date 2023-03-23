@@ -1,0 +1,78 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <h1>{{ title}}</h1>
+  <hr />
+  <input type="text" v-on:input="changeTitle" />
+  <p>{{description}}</p>
+
+  <hr />
+  <p>{{hello()}}</p>
+  <hr />
+  <p v-once>
+    {{titleTwo}}
+    <span>{{hi()}}</span>
+  </p>
+  dddd
+  <hr />
+  <p>
+    <a v-bind:href="link">Web sitesine git</a>
+  </p>
+  <hr />
+  <p v-html="blogLink"></p>
+  <hr />
+  <button v-on:click="showAlert('Salih')">Alerti Göster</button>
+  <p>{{count}}</p>
+  <button v-on:click="counter(3)">Arttır</button>
+  <hr />
+
+  <p v-on:mousemove="updateCoords(2,$event)">
+    Koordinatlar : {{x}},{{y}} <span v-on:mousemove.stop>Gizli Bölme</span>
+  </p>
+
+  <hr />
+
+  <input type="text" v-on:keyup.enter="showAlert2" />
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      title: "Merhaba Vue.js | Salih Can Çakar",
+      description: "",
+      titleTwo: "Bu yazı methoddan çekilmiştir.",
+      link: "https://www.salihcancakar.dev",
+      blogLink: '<a href="https://nextjs.org/blog/next-13">Link</a>',
+      count: 0,
+      x: 0,
+      y: 0,
+    },
+    methods: {
+      changeTitle() {
+        this.description = event.target.value;
+      },
+      hello() {
+        return "Selamlar Salih Can Çakar";
+      },
+      hi() {
+        this.titleTwo = "Bu yazı değiştirme yazısıdır.";
+        return this.titleTwo;
+      },
+      showAlert(name) {
+        alert(name);
+      },
+      counter(step) {
+        this.count += step;
+      },
+      updateCoords(step, event) {
+        this.count += step;
+        this.x = event.clientX;
+        this.y = event.clientY;
+      },
+      showAlert2(event) {
+        alert(event.target.value);
+      },
+    },
+  });
+</script>
