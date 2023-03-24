@@ -1,0 +1,79 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<style>
+  div {
+    border: 2px solid #000;
+    padding: 5px 10px;
+  }
+</style>
+
+<div id="exercise">
+  <div>
+    Soru 1
+    <button @click="show = !show">Toggle</button>
+
+    <template v-if="show">
+      <!-- v-if yorum satırına dönüştürüyor-->
+      <p>Beni Görebiliyor Musun? 1</p>
+      <p>Ya da beni görebiliyor musun? 2</p>
+      <p>Beni Görebiliyor musun? 3</p>
+      <p>Ya da beni görebiliyor musun? 4</p>
+    </template>
+
+    <div v-show="!show">
+      <!-- v-show display:none ekliyor-->
+      <p>Beni Görebiliyor Musun?</p>
+      <p>Ya da beni görebiliyor musun? 2</p>
+      <p>Beni Görebiliyor musun? 3</p>
+      <p>Ya da beni görebiliyor musun? 4</p>
+    </div>
+  </div>
+
+  <div>
+    Soru 2
+    <ul>
+      <li v-for="(thing,index) in arr">{{thing}} - {{index}}</li>
+    </ul>
+  </div>
+
+  <div>
+    Soru 3
+    <ul>
+      <li v-for="(info,index,key) in customObject">
+        {{info}} - {{index}} - {{key}}
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    Soru 4
+    <ul>
+      <li v-for="value in testData">
+        <template v-if="Array.isArray(value)">
+          <div v-for="item in value">{{item}}</div>
+        </template>
+        <template v-else>{{value}}</template>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  new Vue({
+    el: "#exercise",
+    data: {
+      show: false,
+      arr: ["Uçak", "Araba", "Tren", "Gemi", "Kruvazör", "Tiger"],
+      customObject: {
+        title: "Game of Thrones",
+        author: "Gerorge R.R ",
+        books: "7",
+      },
+      testData: {
+        name: "NestedLoop",
+        id: 10,
+        data: [3, 45, 19, 14, 02, 20.3, 20.18],
+      },
+    },
+  });
+</script>

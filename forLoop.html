@@ -1,0 +1,53 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<style>
+  div {
+    border: 2px solid #000;
+    padding: 5px 10px;
+  }
+</style>
+
+<div id="app">
+  <ul>
+    <li v-for="person in persons">
+      <ul>
+        <li v-for="(people,key,index) in person">{{people}}</li>
+      </ul>
+    </li>
+  </ul>
+
+  <hr />
+
+  <ul>
+    <li v-for="(product,index) in products" :key="index">
+      {{product}}-{{index}}
+    </li>
+
+    <button @click="products.push('Gözlük')">Ekle</button>
+    <button @click="products.pop()">Çıkar</button>
+  </ul>
+
+  <hr />
+  <div v-for="(product,index) in products">
+    <h4>{{product}}</h4>
+    <h5>{{index}}</h5>
+  </div>
+
+  <hr />
+  <span v-for="i in 5">{{i}}</span>
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      products: ["Monitör", "Klavye", "Askı", "Masa"],
+      persons: [
+        { name: "Gökhan", email: "gokhan@gkandemir.com" },
+        { name: "Salih", email: "salihxcan@hotmail.com" },
+        { name: "Felakettin", email: "felo@gkandemir.com" },
+        { name: "İflasettin", email: "ifo@gkandemir.com" },
+      ],
+    },
+  });
+</script>
